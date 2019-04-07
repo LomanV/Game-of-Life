@@ -1,0 +1,19 @@
+
+Game of Life/graphical_app/graphical_app
+Game of Life/.qmake.stash
+Game of Life/game_structure/game_rules.o
+Game of Life/game_structure/game_structure.o
+Game of Life/game_structure/libgame_structure.a
+Game of Life/game_structure/Makefile
+Game of Life/game_structure/settings.o
+Game of Life/graphical_app/glwidget.o
+Game of Life/graphical_app/main_qt_gl.o
+Game of Life/graphical_app/Makefile
+Game of Life/graphical_app/qrc_resource.o
+Game of Life/graphical_app/vue_opengl.o
+Game of Life/Makefile
+Game of Life/vector2d/libvector2d.a
+Game of Life/vector2d/Makefile
+Game of Life/vector2d/vector2d.o
+Game of Life/vector2d/libvector2d.a
+Game of Life/vector2d/libvector2d.a
