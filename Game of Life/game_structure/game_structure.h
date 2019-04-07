@@ -23,7 +23,11 @@ class Unit : public Dessinable {
 	{}
 	
 	void change_state(void); 
+	void die(void);
+	void live(void);
+
 	State getState(void) const {return state;}
+	SupportADessin* getCanvas(void) const {return support;}
 	Vector2D getPosition(void) const {return position;}
 
 	virtual void dessine(void) override { support->dessine(*this); }
@@ -79,7 +83,9 @@ class Game_Board : public Dessinable {
 	void checker_board(void);
 	void nice_board(void);
 
-	Game_Board next_gen(void) const;
+	void swap_state(void);
+	unsigned int count_live(Unit const& unit, size_t line, size_t col) const;
+	State update(Unit const& unit, size_t line, size_t col) const;
 }; 
 
 class System : public Dessinable {
@@ -116,4 +122,7 @@ class System : public Dessinable {
 
 	System(System const& s) = delete;
 	System operator=(System const& s) = delete;
+
+	void swap_state(void);
+	void update_cache(void);
 }; 

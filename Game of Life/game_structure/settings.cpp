@@ -145,8 +145,8 @@ void Game_Board::nice_board(void){
 }
 
 void Game_Board::checker_board(void){
-	for (size_t i(0); i < game::BOARD_SIZE - 1; ++i){
-		for (size_t j(0); j < game::BOARD_SIZE - 1; ++j){
+	for (size_t i(2); i < game::BOARD_SIZE - 1; ++i){
+		for (size_t j(2); j < game::BOARD_SIZE - 1; ++j){
 			if (i%2 != j%2){
 				board[i][j]->change_state();
 			}

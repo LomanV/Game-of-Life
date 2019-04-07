@@ -10,6 +10,14 @@ void Unit::change_state(void) {
 	}
 } 
 
+void Unit::die(void) {
+	state = DEAD;
+}
+
+void Unit::live(void) {
+	state = ALIVE;
+}
+
 void Game_Board::initialise(void){
 	Vector2D initial_position(-0.5*game::BOARD_SIZE*game::UNIT_SIZE, -0.5*game::BOARD_SIZE*game::UNIT_SIZE);
 	for (unsigned int i(0); i < game::BOARD_SIZE; ++i){

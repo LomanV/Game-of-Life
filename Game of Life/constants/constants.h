@@ -8,6 +8,6 @@ namespace vctr {
 }
 
 namespace game {
-	const unsigned int BOARD_SIZE(200);
+	const unsigned int BOARD_SIZE(300);
 	const double UNIT_SIZE(0.1);
 }

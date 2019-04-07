@@ -1,6 +1,7 @@
 #include <QKeyEvent>
 #include <QTimerEvent>
 #include <QMatrix4x4>
+
 #include "glwidget.h"
 
 // ======================================================================
@@ -78,12 +79,20 @@ void GLWidget::keyPressEvent(QKeyEvent* event)
 void GLWidget::pause()
 {
   if (timerId == 0) {
-	// dans ce cas le timer ne tourne pas alors on le lance
 	timerId = startTimer(20);
 	chronometre.restart();
   } else {
-	// le timer tourne alors on l'arrête
 	killTimer(timerId);
 	timerId = 0;
   }
+}
+
+// =====================================================================
+
+void GLWidget::timerEvent(QTimerEvent* event)
+{
+  Q_UNUSED(event);
+
+  update_cache();
+  update();
 }

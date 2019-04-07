@@ -23,6 +23,7 @@ private:
   virtual void paintGL()                       override;
 
   virtual void keyPressEvent(QKeyEvent* event) override;
+  virtual void timerEvent(QTimerEvent* event)  override;
 
   void pause();
 
