@@ -17,3 +17,4 @@ Game of Life/vector2d/Makefile
 Game of Life/vector2d/vector2d.o
 Game of Life/vector2d/libvector2d.a
 Game of Life/vector2d/libvector2d.a
+.DS_Store

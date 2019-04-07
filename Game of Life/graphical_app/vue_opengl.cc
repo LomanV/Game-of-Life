@@ -1,6 +1,7 @@
 #include "vue_opengl.h"
 #include "vertex_shader.h"
 #include "../vector2d/vector2d.h"
+#include "../constants/constants.h"
 
 #include <cmath>
 
@@ -28,7 +29,7 @@ void VueOpenGL::init()
 void VueOpenGL::initializePosition()
 {
   matrice_vue.setToIdentity();
-  matrice_vue.translate(0.0, 0.0, -15.0);
+  matrice_vue.translate(0.0, 0.0, (-0.08)*game::BOARD_SIZE);
 }
 
 // ======================================================================

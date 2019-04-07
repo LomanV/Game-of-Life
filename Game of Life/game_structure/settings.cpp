@@ -5,8 +5,8 @@ void Game_Board::light_spaceship(size_t line_beg, size_t col_beg){
 	   int erreur(0);
 	   throw erreur;
 	}
-	board[line_beg - 1][col_beg + 1]->change_state(); board[line_beg - 1][col_beg + 2]->change_state(); board[line_beg - 1][col_beg + 3]->change_state(); board[line_beg - 1][col_beg + 4]->change_state();
-	 board[line_beg][col_beg + 4]->change_state(); board[line_beg + 1][col_beg + 4]->change_state(); board[line_beg + 2][col_beg + 3]->change_state(); board[line_beg + 2][col_beg]->change_state(); board[line_beg][col_beg]->change_state();
+	board[line_beg - 1][col_beg + 1]->live(); board[line_beg - 1][col_beg + 2]->live(); board[line_beg - 1][col_beg + 3]->live(); board[line_beg - 1][col_beg + 4]->live();
+	 board[line_beg][col_beg + 4]->live(); board[line_beg + 1][col_beg + 4]->live(); board[line_beg + 2][col_beg + 3]->live(); board[line_beg + 2][col_beg]->live(); board[line_beg][col_beg]->live();
 }
 
 void Game_Board::square(size_t line_beg, size_t col_beg){
@@ -14,7 +14,7 @@ void Game_Board::square(size_t line_beg, size_t col_beg){
 		int erreur(0);
 		throw erreur;
 	}
-	board[line_beg][col_beg]->change_state(); board[line_beg + 1][col_beg]->change_state(); board[line_beg][col_beg + 1]->change_state(); board[line_beg + 1][col_beg + 1]->change_state();
+	board[line_beg][col_beg]->live(); board[line_beg + 1][col_beg]->live(); board[line_beg][col_beg + 1]->live(); board[line_beg + 1][col_beg + 1]->live();
 }
 
 void Game_Board::toad(size_t line_beg, size_t col_beg){
@@ -22,8 +22,8 @@ void Game_Board::toad(size_t line_beg, size_t col_beg){
 		int erreur(0);
 		throw erreur;
 	}
-	board[line_beg - 1][col_beg + 1]->change_state(); board[line_beg][col_beg  -1]->change_state(); board[line_beg + 1][col_beg - 1]->change_state(); board[line_beg + 2][col_beg]->change_state();
-	board[line_beg][col_beg + 2]->change_state(); board[line_beg + 1][col_beg + 2]->change_state();
+	board[line_beg - 1][col_beg + 1]->live(); board[line_beg][col_beg  -1]->live(); board[line_beg + 1][col_beg - 1]->live(); board[line_beg + 2][col_beg]->live();
+	board[line_beg][col_beg + 2]->live(); board[line_beg + 1][col_beg + 2]->live();
 }
 
 void Game_Board::pulsar(size_t line_beg, size_t col_beg){
@@ -47,8 +47,8 @@ void Game_Board::beacon(size_t line_beg, size_t col_beg){
 		int erreur(0);
 		throw erreur;
 	}
-	board[line_beg - 1][col_beg - 1]->change_state(); board[line_beg - 1][col_beg]->change_state(); board[line_beg][col_beg - 1]->change_state();
-	board[line_beg + 1][col_beg + 2]->change_state(); board[line_beg + 2][col_beg + 1]->change_state(); board[line_beg + 2][col_beg + 2]->change_state();
+	board[line_beg - 1][col_beg - 1]->live(); board[line_beg - 1][col_beg]->live(); board[line_beg][col_beg - 1]->live();
+	board[line_beg + 1][col_beg + 2]->live(); board[line_beg + 2][col_beg + 1]->live(); board[line_beg + 2][col_beg + 2]->live();
 }
 
 void Game_Board::glider(size_t line_beg, size_t col_beg){
@@ -56,7 +56,7 @@ void Game_Board::glider(size_t line_beg, size_t col_beg){
 		int erreur(0);
 		throw erreur;
 	}
-	board[line_beg][col_beg]->change_state(); board[line_beg][col_beg + 2]->change_state(); board[line_beg + 1][col_beg + 1]->change_state(); board[line_beg + 1][col_beg + 2]->change_state(); board[line_beg + 2][col_beg + 1]->change_state();
+	board[line_beg][col_beg]->live(); board[line_beg][col_beg + 2]->live(); board[line_beg + 1][col_beg + 1]->live(); board[line_beg + 1][col_beg + 2]->live(); board[line_beg + 2][col_beg + 1]->live();
 }
 
 void Game_Board::mid_spaceship(size_t line_beg, size_t col_beg){
@@ -64,9 +64,9 @@ void Game_Board::mid_spaceship(size_t line_beg, size_t col_beg){
 		int erreur(0);
 		throw erreur;
 	}
-	board[line_beg][col_beg]->change_state(); board[line_beg][col_beg + 1]->change_state(); board[line_beg][col_beg + 2]->change_state(); board[line_beg][col_beg + 3]->change_state(); board[line_beg][col_beg + 4]->change_state(); 
-	board[line_beg + 1][col_beg]->change_state(); board[line_beg + 1][col_beg + 5]->change_state(); board[line_beg + 2][col_beg]->change_state(); board[line_beg + 3][col_beg + 1]->change_state();
-	board[line_beg + 3][col_beg + 5]->change_state(); board[line_beg + 4][col_beg + 3]->change_state(); 
+	board[line_beg][col_beg]->live(); board[line_beg][col_beg + 1]->live(); board[line_beg][col_beg + 2]->live(); board[line_beg][col_beg + 3]->live(); board[line_beg][col_beg + 4]->live(); 
+	board[line_beg + 1][col_beg]->live(); board[line_beg + 1][col_beg + 5]->live(); board[line_beg + 2][col_beg]->live(); board[line_beg + 3][col_beg + 1]->live();
+	board[line_beg + 3][col_beg + 5]->live(); board[line_beg + 4][col_beg + 3]->live(); 
 }
 
 void Game_Board::larger_blinker(size_t line_beg, size_t col_beg){
@@ -91,7 +91,7 @@ void Game_Board::acorn(size_t line_beg, size_t col_beg){
 		int err(0);
 		throw err;
 	}
-	board[line_beg][col_beg + 1]->change_state(); board[line_beg + 1][col_beg + 3]->change_state();
+	board[line_beg][col_beg + 1]->live(); board[line_beg + 1][col_beg + 3]->live();
 }
 
 void Game_Board::die_hard(size_t line_beg, size_t col_beg){
@@ -106,7 +106,7 @@ void Game_Board::die_hard(size_t line_beg, size_t col_beg){
 		int err(0);
 		throw err;
 	}
-	board[line_beg + 2][col_beg + 1]->change_state(); board[line_beg][col_beg + 6]->change_state();
+	board[line_beg + 2][col_beg + 1]->live(); board[line_beg][col_beg + 6]->live();
 }
 
 void Game_Board::R_pentomino(size_t line_beg, size_t col_beg){
@@ -120,7 +120,7 @@ void Game_Board::R_pentomino(size_t line_beg, size_t col_beg){
 		int err(0);
 		throw err;
 	}
-	board[line_beg + 1][col_beg]->change_state(); board[line_beg][col_beg + 2]->change_state();
+	board[line_beg + 1][col_beg]->live(); board[line_beg][col_beg + 2]->live();
 }
 
 void Game_Board::Pi_heptomino(size_t line_beg, size_t col_beg){
@@ -131,14 +131,14 @@ void Game_Board::Pi_heptomino(size_t line_beg, size_t col_beg){
 		int err(0);
 		throw err;
 	}
-	board[line_beg][col_beg + 1]->change_state();
+	board[line_beg][col_beg + 1]->live();
 }
 
 void Game_Board::nice_board(void){
-	for (size_t i(0); i < game::BOARD_SIZE - 1; ++i){
-		for (size_t j(0); j < game::BOARD_SIZE - 1; ++j){
+	for (size_t i(2); i < game::BOARD_SIZE - 2; ++i){
+		for (size_t j(2); j < game::BOARD_SIZE - 2; ++j){
 			if (i%2 == 0 and j%2 == 0){
-				board[i][j]->change_state();
+				board[i][j]->live();
 			}
 		}
 	}
@@ -148,7 +148,7 @@ void Game_Board::checker_board(void){
 	for (size_t i(2); i < game::BOARD_SIZE - 1; ++i){
 		for (size_t j(2); j < game::BOARD_SIZE - 1; ++j){
 			if (i%2 != j%2){
-				board[i][j]->change_state();
+				board[i][j]->live();
 			}
 		}
 	}
