@@ -82,7 +82,7 @@ class Game_Board : public Dessinable {
 	void Pi_heptomino(size_t line_beg, size_t col_beg);
 	void checker_board(void);
 	void nice_board(void);
-	// void gosper_glider_gun(size_t line_beg, size_t col_beg);
+	void gosper_glider_gun(size_t line_beg, size_t col_beg);
 
 	void swap_state(void);
 	unsigned int count_live(Unit const& unit, size_t line, size_t col) const;
@@ -120,7 +120,7 @@ class System : public Dessinable {
 	void R_pentomino(size_t line_beg, size_t col_beg) {instance1.R_pentomino(line_beg, col_beg); instance2.R_pentomino(line_beg, col_beg);} 
 	void checker_board(void) {instance1.checker_board(); instance2.checker_board(); }
 	void nice_board(void) {instance1.nice_board(); instance2.nice_board(); }
-	// void gosper_glider_gun(size_t line_beg, size_t col_beg);
+	void gosper_glider_gun(size_t line_beg, size_t col_beg) {instance1.gosper_glider_gun(line_beg, col_beg); instance2.gosper_glider_gun(line_beg, col_beg);}
 
 	System(System const& s) = delete;
 	System operator=(System const& s) = delete;

@@ -153,3 +153,24 @@ void Game_Board::checker_board(void){
 		}
 	}
 }
+
+void Game_Board::gosper_glider_gun(size_t line_beg, size_t col_beg){
+	square(line_beg, col_beg);
+	drawCol(3,line_beg, col_beg+10);
+	board[line_beg -1][col_beg+11]->live();
+	board[line_beg +3][col_beg+11]->live();
+	drawLine(2, line_beg-2, col_beg+12);
+	drawLine(2,line_beg+4, col_beg+12);
+	board[line_beg+1][col_beg+14]->live();
+	board[line_beg -1][col_beg+15]->live();
+	board[line_beg +3][col_beg+15]->live();
+	drawCol(3,line_beg, col_beg+16);
+	board[line_beg+1][col_beg+17]->live();
+	drawCol(3,line_beg-2, col_beg+20);
+	drawCol(3,line_beg-2, col_beg+21);
+	board[line_beg+1][col_beg+22]->live();
+	board[line_beg-3][col_beg+22]->live();
+	drawCol(2, line_beg+1,col_beg+24);
+	drawCol(2, line_beg-4,col_beg+24);
+	square(line_beg-2, col_beg+34);
+}
