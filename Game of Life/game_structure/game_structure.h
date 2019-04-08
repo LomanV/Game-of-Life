@@ -22,7 +22,7 @@ class Unit : public Dessinable {
 	state(my_state)
 	{}
 	
-	void change_state(void); 
+	void change_state(State my_state); 
 	void die(void);
 	void live(void);
 

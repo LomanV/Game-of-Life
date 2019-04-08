@@ -34,16 +34,14 @@ void System::update_cache(void){
 	if (instance1.state == CACHE) {
 		for (size_t i(1); i < game::BOARD_SIZE-1; ++i){
 			for (size_t j(1); j < game::BOARD_SIZE-1; ++j){
-				delete instance2.board[i][j];
-				instance2.board[i][j] = new Unit(instance1.board[i][j]->getCanvas(), instance1.board[i][j]->getPosition(), instance1.update(*instance1.board[i][j], i, j));
+				instance2.board[i][j]->change_state(instance1.update(*instance1.board[i][j], i, j));
 			}
 		}
 	}
 	else if (instance2.state == CACHE){
 		for (size_t i(2); i < game::BOARD_SIZE-1; ++i){
 			for (size_t j(1); j < game::BOARD_SIZE-1; ++j){
-				delete instance1.board[i][j];
-				instance1.board[i][j] = new Unit(instance2.board[i][j]->getCanvas(), instance2.board[i][j]->getPosition(), instance2.update(*instance2.board[i][j], i, j));
+				instance1.board[i][j]->change_state(instance2.update(*instance2.board[i][j], i, j));
 			}
 		}
 	}

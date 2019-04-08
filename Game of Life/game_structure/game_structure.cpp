@@ -1,13 +1,8 @@
 #include "game_structure.h"
 #include "../vector2d/vector2d.h"
 
-void Unit::change_state(void) {
-	switch(state){
-		case DEAD : state = ALIVE;
-		break; 
-		case ALIVE : state = DEAD;
-		break;
-	}
+void Unit::change_state(State my_state) {
+	state = my_state;
 } 
 
 void Unit::die(void) {
@@ -30,19 +25,19 @@ void Game_Board::initialise(void){
 
 void Game_Board::drawLine(size_t size, size_t line, size_t col_beg){
 	for (size_t i(0); i < size; ++i){
-		board[line][col_beg+i]->change_state();
+		board[line][col_beg+i]->live();
 	}
 }
 
 void Game_Board::drawCol(size_t size, size_t line_beg, size_t col){
 	for (size_t i(0); i < size; ++i){
-		board[line_beg+i][col]->change_state();
+		board[line_beg+i][col]->live();
 	}
 }
 
 
 void Game_Board::drawDiag(size_t size, size_t line_beg, size_t col_beg){
 	for (size_t i(0); i < size; ++i){
-		board[line_beg+i][col_beg+i]->change_state();
+		board[line_beg+i][col_beg+i]->live();
 	}
 }
