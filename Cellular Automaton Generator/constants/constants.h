@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../vector2d/vector2d.h"
 
 namespace vctr {
 	const double ZERO_VECTOR_NORM(1e-30);
