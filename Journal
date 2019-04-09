@@ -1,4 +1,4 @@
-First version
+1.1
 
 Need for optimisation
 
@@ -6,6 +6,6 @@ Need for user interface
 
 Need for exception gestion (rules)
 
-Find a way to draw without vectors
+Use bools instead of 
 
-Use bools instead of enum
+Torus option

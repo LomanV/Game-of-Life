@@ -29,7 +29,7 @@ void VueOpenGL::init()
 void VueOpenGL::initializePosition()
 {
   matrice_vue.setToIdentity();
-  matrice_vue.translate(-0.5*game::BOARD_SIZE*game::UNIT_SIZE, -0.5*game::BOARD_SIZE*game::UNIT_SIZE, (-0.08)*game::BOARD_SIZE);
+  matrice_vue.translate(-0.5*game::BOARD_SIZE*game::UNIT_SIZE, -0.5*game::BOARD_SIZE*game::UNIT_SIZE, (-0.8)*game::BOARD_SIZE);
 }
 
 // ======================================================================

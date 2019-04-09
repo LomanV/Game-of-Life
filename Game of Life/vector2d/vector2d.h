@@ -3,10 +3,10 @@
 
 class Vector2D {
 	private :
-	double x;
-	double y;
+	int x;
+	int y;
 	public :
-	Vector2D(double n_x = 0, double n_y = 0) : x(n_x), y(n_y) {}
+	Vector2D(int n_x = 0, int n_y = 0) : x(n_x), y(n_y) {}
 
 	Vector2D& operator +=(Vector2D const& v);
 	Vector2D& operator -=(Vector2D const& v);
