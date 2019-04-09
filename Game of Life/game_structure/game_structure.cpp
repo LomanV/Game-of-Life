@@ -14,10 +14,9 @@ void Unit::live(void) {
 }
 
 void Game_Board::initialise(void){
-	Vector2D initial_position(-0.5*game::BOARD_SIZE*game::UNIT_SIZE, -0.5*game::BOARD_SIZE*game::UNIT_SIZE);
 	for (unsigned int i(0); i < game::BOARD_SIZE; ++i){
 		for (unsigned int j(0); j < game::BOARD_SIZE; ++j){
-			Vector2D new_position(initial_position[0]+i*game::UNIT_SIZE, initial_position[1]+j*game::UNIT_SIZE);
+			Vector2D new_position(i*game::UNIT_SIZE, j*game::UNIT_SIZE);
 			board[i][j] = new Unit(support, new_position, DEAD);
 		}
 	}
