@@ -32,7 +32,7 @@ void GLWidget::paintGL()
 // ======================================================================
 void GLWidget::keyPressEvent(QKeyEvent* event)
 {
-  constexpr unsigned int petit_pas(10*game::UNIT_SIZE);
+  constexpr double petit_pas(10*game::UNIT_SIZE);
 
   switch (event->key()) {
 
@@ -71,7 +71,7 @@ void GLWidget::keyPressEvent(QKeyEvent* event)
 	break;
   };
 
-  update(); // redessine
+  update(); 
 }
 
 // ======================================================================

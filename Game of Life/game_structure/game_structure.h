@@ -5,10 +5,16 @@
 #include "../general/support_a_dessin.h"
 #include "../constants/constants.h"
 
-#include <array>
+#include <vector>
 
-enum State {DEAD, ALIVE};
-enum System_state {CACHE, CURRENT};
+enum State : bool {
+	DEAD, 
+	ALIVE
+};
+enum System_state : bool {
+	CACHE,
+	CURRENT
+};
 
 class Unit : public Dessinable {
 	private :
@@ -38,7 +44,7 @@ class Game_Board : public Dessinable {
 	friend class System;
 
 	private :
-	std::array<std::array<Unit*, game::BOARD_SIZE>, game::BOARD_SIZE> board; 
+	std::vector<std::vector<Unit*>> board; 
 	System_state state;
 
 	public :

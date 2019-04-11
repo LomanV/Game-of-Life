@@ -14,16 +14,16 @@ State Game_Board::update(Unit const& unit, size_t line, size_t col) const{
 	unsigned int count_live = this->count_live(unit, line, col);
 	if (unit.getState() == ALIVE){
 		if (count_live < 2) return DEAD;
-		if (count_live == 3 or count_live == 2) return ALIVE;
 		if (count_live > 3) return DEAD;
+		else return ALIVE;
 	}
-	else if (unit.getState() == DEAD and count_live == 3) return ALIVE;
+	else if (count_live == 3) return ALIVE;
 	return unit.getState();
 }
 
 void Game_Board::swap_state(void){
 	if (state == CACHE) state = CURRENT;
-	else if (state == CURRENT) state = CACHE;
+	else state = CACHE;
 }
 void System::swap_state(void){
 	instance1.swap_state();
@@ -38,7 +38,7 @@ void System::update_cache(void){
 			}
 		}
 	}
-	else if (instance2.state == CACHE){
+	else {
 		for (size_t i(2); i < game::BOARD_SIZE-1; ++i){
 			for (size_t j(1); j < game::BOARD_SIZE-1; ++j){
 				instance1.board[i][j]->change_state(instance2.update(*instance2.board[i][j], i, j));
