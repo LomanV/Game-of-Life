@@ -39,6 +39,26 @@ class Unit : public Dessinable {
 	virtual void dessine(void) override { support->dessine(*this); }
 }; 
 
+class Line : public Dessinable {
+	private :
+	std::vector<Unit*> line; 
+
+	public :
+
+	// constructor and initialisation
+	Line(SupportADessin* canvas, unsigned short int y_pos) :
+	Dessinable(canvas)
+	{
+		initialise(y_pos);
+	}
+
+	~Line() {
+		for (auto cell : line) delete cell;
+	}
+
+	void initialise(unsigned short int y_pos); 
+}; 
+
 class Game_Board : public Dessinable {
 	friend class VueOpenGL;
 	friend class System;
@@ -48,6 +68,8 @@ class Game_Board : public Dessinable {
 	System_state state;
 
 	public :
+
+	// constructor and initialisation
 	Game_Board(SupportADessin* support, System_state my_state) :
 	Dessinable(support),
 	state(my_state)
@@ -56,8 +78,8 @@ class Game_Board : public Dessinable {
 	}
 	
 	~Game_Board() {
-		for (auto units : board){
-			for (auto unit : units){
+		for (auto line : board){
+			for (auto unit : line){
 				delete unit;
 			}
 		}
@@ -70,37 +92,41 @@ class Game_Board : public Dessinable {
 	virtual void dessine(void) override { support->dessine(*this); }
 	System_state getSystem_state(void) const { return state; }
 
-	void drawLine(size_t size, size_t line, size_t col_beg); 
-	void drawCol(size_t size, size_t line_beg, size_t col_beg);
-	void drawDiag(size_t size, size_t line_beg, size_t col_beg);
+	void drawLine(unsigned short int size, unsigned short int line, unsigned short int col_beg); 
+	void drawCol(unsigned short int size, unsigned short int line_beg, unsigned short int col_beg);
+	void drawDiag(unsigned short int size, unsigned short int line_beg, unsigned short int col_beg);
 
-	void light_spaceship(size_t line_beg, size_t col_beg); 
-	void mid_spaceship(size_t line_beg, size_t col_beg);
-	void square(size_t line_beg, size_t col_beg); 
-	void toad(size_t line_beg, size_t col_beg);
-	void pulsar(size_t line_beg, size_t col_beg);
-	void beacon(size_t line_beg, size_t col_beg);
-	void glider(size_t line_beg, size_t col_beg);
-	void larger_blinker(size_t line_beg, size_t col_beg);
-	void acorn(size_t line_beg, size_t col_beg);
-	void die_hard(size_t line_beg, size_t col_beg);
-	void R_pentomino(size_t line_beg, size_t col_beg);
-	void Pi_heptomino(size_t line_beg, size_t col_beg);
+	void light_spaceship(unsigned short int line_beg, unsigned short int col_beg); 
+	void mid_spaceship(unsigned short int line_beg, unsigned short int col_beg);
+	void square(unsigned short int line_beg, unsigned short int col_beg); 
+	void toad(unsigned short int line_beg, unsigned short int col_beg);
+	void pulsar(unsigned short int line_beg, unsigned short int col_beg);
+	void beacon(unsigned short int line_beg, unsigned short int col_beg);
+	void glider(unsigned short int line_beg, unsigned short int col_beg);
+	void larger_blinker(unsigned short int line_beg, unsigned short int col_beg);
+	void acorn(unsigned short int line_beg, unsigned short int col_beg);
+	void die_hard(unsigned short int line_beg, unsigned short int col_beg);
+	void R_pentomino(unsigned short int line_beg, unsigned short int col_beg);
+	void Pi_heptomino(unsigned short int line_beg, unsigned short int col_beg);
 	void checker_board(void);
 	void nice_board(void);
-	void gosper_glider_gun(size_t line_beg, size_t col_beg);
+	void gosper_glider_gun(unsigned short int line_beg, unsigned short int col_beg);
 
 	void swap_state(void);
-	unsigned int count_live(Unit const& unit, size_t line, size_t col) const;
-	State update(Unit const& unit, size_t line, size_t col) const;
+	unsigned int count_live(Unit const& unit, unsigned short int line, unsigned short int col) const;
+	State update(Unit const& unit, unsigned short int line, unsigned short int col) const;
 }; 
 
 class System : public Dessinable {
 	friend class VueOpenGL;
 
+	private :
 	Game_Board instance1;
 	Game_Board instance2;
+
 	public :
+
+	// constructor and initialisation
 	System(SupportADessin* support) :
 	Dessinable(support),
 	instance1(support, CURRENT),
@@ -108,25 +134,25 @@ class System : public Dessinable {
 
 	virtual void dessine(void) override { support->dessine(*this); }
 	
-	void drawLine(size_t size, size_t line, size_t col_beg) {instance1.drawLine(size, line, col_beg); instance2.drawLine(size, line, col_beg);} 
-	void drawCol(size_t size, size_t line_beg, size_t col) {instance1.drawCol(size, line_beg, col); instance2.drawCol(size, line_beg, col);} 
-	void drawDiag(size_t size, size_t line_beg, size_t col_beg) {instance1.drawCol(size, line_beg, col_beg); instance2.drawCol(size, line_beg, col_beg);} 
+	void drawLine(unsigned short int size, unsigned short int line, unsigned short int col_beg) {instance1.drawLine(size, line, col_beg); instance2.drawLine(size, line, col_beg);} 
+	void drawCol(unsigned short int size, unsigned short int line_beg, unsigned short int col) {instance1.drawCol(size, line_beg, col); instance2.drawCol(size, line_beg, col);} 
+	void drawDiag(unsigned short int size, unsigned short int line_beg, unsigned short int col_beg) {instance1.drawCol(size, line_beg, col_beg); instance2.drawCol(size, line_beg, col_beg);} 
 
 
-	void light_spaceship(size_t line_beg, size_t col_beg) {instance1.light_spaceship(line_beg, col_beg); instance2.light_spaceship(line_beg, col_beg);} 
-	void mid_spaceship(size_t line_beg, size_t col_beg)  {instance1.mid_spaceship(line_beg, col_beg); instance2.mid_spaceship(line_beg, col_beg);} 
-	void square(size_t line_beg, size_t col_beg) {instance1.square(line_beg, col_beg); instance2.square(line_beg, col_beg);} 
-	void toad(size_t line_beg, size_t col_beg) {instance1.toad(line_beg, col_beg); instance2.toad(line_beg, col_beg);} 
-	void pulsar(size_t line_beg, size_t col_beg) {instance1.pulsar(line_beg, col_beg); instance2.pulsar(line_beg, col_beg);} 
-	void beacon(size_t line_beg, size_t col_beg) {instance1.beacon(line_beg, col_beg); instance2.beacon(line_beg, col_beg);} 
-	void glider(size_t line_beg, size_t col_beg) {instance1.glider(line_beg, col_beg); instance2.glider(line_beg, col_beg);} 
-	void larger_blinker(size_t line_beg, size_t col_beg) {instance1.larger_blinker(line_beg, col_beg); instance2.larger_blinker(line_beg, col_beg);} 
-	void acorn(size_t line_beg, size_t col_beg) {instance1.acorn(line_beg, col_beg); instance2.acorn(line_beg, col_beg);} 
-	void die_hard(size_t line_beg, size_t col_beg) {instance1.die_hard(line_beg, col_beg); instance2.die_hard(line_beg, col_beg);} 
-	void R_pentomino(size_t line_beg, size_t col_beg) {instance1.R_pentomino(line_beg, col_beg); instance2.R_pentomino(line_beg, col_beg);} 
+	void light_spaceship(unsigned short int line_beg, unsigned short int col_beg) {instance1.light_spaceship(line_beg, col_beg); instance2.light_spaceship(line_beg, col_beg);} 
+	void mid_spaceship(unsigned short int line_beg, unsigned short int col_beg)  {instance1.mid_spaceship(line_beg, col_beg); instance2.mid_spaceship(line_beg, col_beg);} 
+	void square(unsigned short int line_beg, unsigned short int col_beg) {instance1.square(line_beg, col_beg); instance2.square(line_beg, col_beg);} 
+	void toad(unsigned short int line_beg, unsigned short int col_beg) {instance1.toad(line_beg, col_beg); instance2.toad(line_beg, col_beg);} 
+	void pulsar(unsigned short int line_beg, unsigned short int col_beg) {instance1.pulsar(line_beg, col_beg); instance2.pulsar(line_beg, col_beg);} 
+	void beacon(unsigned short int line_beg, unsigned short int col_beg) {instance1.beacon(line_beg, col_beg); instance2.beacon(line_beg, col_beg);} 
+	void glider(unsigned short int line_beg, unsigned short int col_beg) {instance1.glider(line_beg, col_beg); instance2.glider(line_beg, col_beg);} 
+	void larger_blinker(unsigned short int line_beg, unsigned short int col_beg) {instance1.larger_blinker(line_beg, col_beg); instance2.larger_blinker(line_beg, col_beg);} 
+	void acorn(unsigned short int line_beg, unsigned short int col_beg) {instance1.acorn(line_beg, col_beg); instance2.acorn(line_beg, col_beg);} 
+	void die_hard(unsigned short int line_beg, unsigned short int col_beg) {instance1.die_hard(line_beg, col_beg); instance2.die_hard(line_beg, col_beg);} 
+	void R_pentomino(unsigned short int line_beg, unsigned short int col_beg) {instance1.R_pentomino(line_beg, col_beg); instance2.R_pentomino(line_beg, col_beg);} 
 	void checker_board(void) {instance1.checker_board(); instance2.checker_board(); }
 	void nice_board(void) {instance1.nice_board(); instance2.nice_board(); }
-	void gosper_glider_gun(size_t line_beg, size_t col_beg) {instance1.gosper_glider_gun(line_beg, col_beg); instance2.gosper_glider_gun(line_beg, col_beg);}
+	void gosper_glider_gun(unsigned short int line_beg, unsigned short int col_beg) {instance1.gosper_glider_gun(line_beg, col_beg); instance2.gosper_glider_gun(line_beg, col_beg);}
 
 	System(System const& s) = delete;
 	System operator=(System const& s) = delete;

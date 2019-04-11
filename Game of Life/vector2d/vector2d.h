@@ -3,10 +3,10 @@
 
 class Vector2D {
 	private :
-	int x;
-	int y;
+	unsigned short int x;
+	unsigned short int y;
 	public :
-	Vector2D(int n_x = 0, int n_y = 0) : x(n_x), y(n_y) {}
+	Vector2D(unsigned short int n_x = 0, unsigned short int n_y = 0) : x(n_x), y(n_y) {}
 
 	Vector2D& operator +=(Vector2D const& v);
 	Vector2D& operator -=(Vector2D const& v);
