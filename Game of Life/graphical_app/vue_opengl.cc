@@ -99,6 +99,12 @@ void VueOpenGL::dessine(Unit const& unit){
 
 // ======================================================================
 
+void VueOpenGL::dessine(Line const& line){
+	for (auto unit : line.line) dessine(*unit);
+}
+
+// ======================================================================
+
 void VueOpenGL::dessine(Game_Board const& board){
     for (auto units : board.board){
 		for (auto unit : units){

@@ -40,6 +40,7 @@ class Unit : public Dessinable {
 }; 
 
 class Line : public Dessinable {
+	friend class VueOpenGL;
 	private :
 	std::vector<Unit*> line; 
 
@@ -57,6 +58,9 @@ class Line : public Dessinable {
 	}
 
 	void initialise(unsigned short int y_pos); 
+
+	// graphics
+	virtual void dessine(void) override { support->dessine(*this); }
 }; 
 
 class Game_Board : public Dessinable {

@@ -21,6 +21,7 @@ class VueOpenGL : public SupportADessin {
   void dessineCarre(QMatrix4x4 const& pov, Vector2D const& bottom_right_corner, double side, bool color);
 
   void dessine(Unit const& unit) override;
+  void dessine(Line const& line) override;
   void dessine(Game_Board const& board) override;
   void dessine(System const& system) override;
 
