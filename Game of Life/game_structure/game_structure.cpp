@@ -21,8 +21,10 @@ void Line::initialise(unsigned short int y_pos){
 }
 
 void Game_Board::initialise(void){
+	board.reserve(game::BOARD_SIZE);
 	for (unsigned short int i(0); i < game::BOARD_SIZE; ++i){
 		std::vector<Unit*> line;
+		line.reserve(game::BOARD_SIZE);
 		for (unsigned short int j(0); j < game::BOARD_SIZE; ++j){
 			Vector2D new_position(i*game::UNIT_SIZE, j*game::UNIT_SIZE);
 			line.push_back(new Unit(support, new_position, DEAD));

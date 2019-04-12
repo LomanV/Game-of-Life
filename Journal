@@ -8,6 +8,8 @@ Torus option
 
 Live cells count (every nth iteration display)
 
-Finish line implementation (future Wock)
+Finish line implementation (future Wolphram)
 
 Add COMMENTS lots of COMMENTS
+
+Use reserve for vector ?
