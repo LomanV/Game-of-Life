@@ -19,7 +19,7 @@ void VueOpenGL::init()
 
   prog.bind();
 
-  glEnable(GL_DEPTH_TEST);
+  //glEnable(GL_DEPTH_TEST);
   //glEnable(GL_CULL_FACE);
 
   initializePosition();
@@ -72,12 +72,10 @@ void VueOpenGL::translate(double x, double y, double z)
 
 // ======================================================================
 
-void VueOpenGL::dessineCarre (QMatrix4x4 const& pov, Vector2D const& bottom_right_corner, double side, bool color){
+void VueOpenGL::dessineCarre (Vector2D const& bottom_right_corner, double side){
 
-    prog.setUniformValue("vue_modele", matrice_vue * pov);
-    if (color){
-	    prog.setAttributeValue(CouleurId, 1.0, 1.0, 1.0);
-    } else {prog.setAttributeValue(CouleurId, 1.0,0.0,0.0);}
+    prog.setUniformValue("vue_modele", matrice_vue);
+    prog.setAttributeValue(CouleurId, 1.0, 1.0, 1.0);
 
     glBegin((GL_QUADS));
     glVertex2d(bottom_right_corner[0], bottom_right_corner[1]);
@@ -90,10 +88,8 @@ void VueOpenGL::dessineCarre (QMatrix4x4 const& pov, Vector2D const& bottom_righ
 // ======================================================================
 
 void VueOpenGL::dessine(Unit const& unit){
-    QMatrix4x4 matrix;
-    State state = unit.getState();
-    if (state == ALIVE) {
-	    dessineCarre(matrix, unit.getPosition(), game::UNIT_SIZE, true);
+    if (unit.getState() == ALIVE) {
+	    dessineCarre(unit.getPosition(), game::UNIT_SIZE);
     } 
 }
 

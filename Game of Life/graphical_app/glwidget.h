@@ -1,6 +1,4 @@
-#ifndef GLWIDGET_H
-#define GLWIDGET_H
-
+#pragma once
 #include <QOpenGLWidget>        
 #include <QTime>            
 
@@ -32,5 +30,3 @@ private:
   int timerId;
   QTime chronometre;
 };
-
-#endif // GLWIDGET_H

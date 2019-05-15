@@ -115,6 +115,7 @@ class Game_Board : public Dessinable {
 	void checker_board(void);
 	void nice_board(void);
 	void gosper_glider_gun(unsigned short int line_beg, unsigned short int col_beg);
+	void max(void);
 
 	void swap_state(void);
 	unsigned int count_live(Unit const& unit, unsigned short int line, unsigned short int col) const;
@@ -157,6 +158,7 @@ class System : public Dessinable {
 	void checker_board(void) {instance1.checker_board(); instance2.checker_board(); }
 	void nice_board(void) {instance1.nice_board(); instance2.nice_board(); }
 	void gosper_glider_gun(unsigned short int line_beg, unsigned short int col_beg) {instance1.gosper_glider_gun(line_beg, col_beg); instance2.gosper_glider_gun(line_beg, col_beg);}
+	void max(void) {instance1.max(); instance2.max();}
 
 	System(System const& s) = delete;
 	System operator=(System const& s) = delete;

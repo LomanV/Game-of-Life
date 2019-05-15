@@ -174,3 +174,7 @@ void Game_Board::gosper_glider_gun(unsigned short int line_beg, unsigned short i
 	drawCol(2, line_beg-4,col_beg+24);
 	square(line_beg-2, col_beg+34);
 }
+
+void Game_Board::max(void){
+	
+}
