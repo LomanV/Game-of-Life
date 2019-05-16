@@ -4,7 +4,7 @@ unsigned int Game_Board::count_live(Unit const& unit, unsigned short int line, u
 	unsigned int res(0);
 	for (unsigned short int i(line-1); i <= line+1; ++i){
 		for (unsigned short int j(col-1); j <= col+1; ++j){
-			if (board[i][j]->getState() == ALIVE and (i!= line or j != col)) ++res;
+			if (board[i][j]->getState() == states::ALIVE and (i!= line or j != col)) ++res;
 		}
 	}
 	return res;
@@ -12,12 +12,12 @@ unsigned int Game_Board::count_live(Unit const& unit, unsigned short int line, u
 
 State Game_Board::update(Unit const& unit, unsigned short int line, unsigned short int col) const{
 	unsigned int count_live = this->count_live(unit, line, col);
-	if (unit.getState() == ALIVE){
-		if (count_live < 2) return DEAD;
-		if (count_live > 3) return DEAD;
-		else return ALIVE;
+	if (unit.getState() == states::ALIVE){
+		if (count_live < 2) return states::DEAD;
+		if (count_live > 3) return states::DEAD;
+		else return states::ALIVE;
 	}
-	else if (count_live == 3) return ALIVE;
+	else if (count_live == 3) return states::ALIVE;
 	return unit.getState();
 }
 

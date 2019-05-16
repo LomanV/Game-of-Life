@@ -5,16 +5,15 @@
 #include "../general/support_a_dessin.h"
 #include "../constants/constants.h"
 
+#include <cstdint>
 #include <vector>
 
-enum State : bool {
-	DEAD, 
-	ALIVE
-};
 enum System_state : bool {
 	CACHE,
 	CURRENT
 };
+
+typedef std::uint8_t State;
 
 class Unit : public Dessinable {
 	private :
@@ -22,7 +21,7 @@ class Unit : public Dessinable {
 	State state;
 
 	public :
-	Unit(SupportADessin* canvas, Vector2D my_position = vctr::ZERO_VECTOR, State my_state = DEAD) : 
+	Unit(SupportADessin* canvas, Vector2D my_position = vctr::ZERO_VECTOR, State my_state = states::DEAD) : 
 	Dessinable(canvas),
 	position(my_position),
 	state(my_state)

@@ -6,17 +6,17 @@ void Unit::change_state(State my_state) {
 } 
 
 void Unit::die(void) {
-	state = DEAD;
+	state = states::DEAD;
 }
 
 void Unit::live(void) {
-	state = ALIVE;
+	state = states::ALIVE;
 }
 
 void Line::initialise(unsigned short int y_pos){
 	for (unsigned short int i(0); i < game::BOARD_SIZE; ++i){
 		Vector2D new_position(i*game::UNIT_SIZE, y_pos);
-		line.push_back(new Unit(support, new_position, DEAD));
+		line.push_back(new Unit(support, new_position, states::DEAD));
 	}
 }
 
@@ -27,7 +27,7 @@ void Game_Board::initialise(void){
 		line.reserve(game::BOARD_SIZE);
 		for (unsigned short int j(0); j < game::BOARD_SIZE; ++j){
 			Vector2D new_position(i*game::UNIT_SIZE, j*game::UNIT_SIZE);
-			line.push_back(new Unit(support, new_position, DEAD));
+			line.push_back(new Unit(support, new_position, states::DEAD));
 		}
 		board.push_back(line);
 	}

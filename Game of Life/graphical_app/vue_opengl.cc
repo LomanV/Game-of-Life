@@ -88,7 +88,7 @@ void VueOpenGL::dessineCarre (Vector2D const& bottom_right_corner, double side){
 // ======================================================================
 
 void VueOpenGL::dessine(Unit const& unit){
-    if (unit.getState() == ALIVE) {
+    if (unit.getState() == states::ALIVE) {
 	    dessineCarre(unit.getPosition(), game::UNIT_SIZE);
     } 
 }
